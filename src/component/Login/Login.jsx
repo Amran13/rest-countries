@@ -1,13 +1,24 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { authContext } from '../Provider/AuthProvider';
 
 const Login = () => {
+    const contextInfo = useContext(authContext)
+    const {logIn} = contextInfo;
+    const navigate = useNavigate()
     const handleLogin = (event) => {
         event.preventDefault()
-        const form = event.target;dsdasdfaczCxcfafzcsdfasd
+        const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
         console.log(email, password)
+        //firebase
+        logIn(email, password)
+        .then(res => {
+            console.log('logedIn Successfully', res.user)
+            navigate('/countries')
+        })
+        .catch(err => console.error(err))
     }
     return (
         <div className="hero min-h-screen bg-base-200">
