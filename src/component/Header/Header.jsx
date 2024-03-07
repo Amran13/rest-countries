@@ -14,21 +14,21 @@ const Header = () => {
 
     return (
         <div className='flex justify-center flex-col lg:flex-row mt-6'>
-            <Link className='mx-2' to="/">Home</Link>
+            <NavLink className='mx-2' to="/">Home</NavLink>
             {
-                user && <Link className='mx-2' to="/countries">Countries</Link>
+                user && <NavLink className='mx-2' to="/countries">Countries</NavLink>
             }
 
 
             <div>
                 {
                     user ? <div className='flex flex-col lg:flex-row'>
-                        <Link className='mx-2' to="/dashboard">Dashboard</Link>
+                        <NavLink className='mx-2' to="/dashboard">Dashboard</NavLink>
                         <p className='mx-8'> {user.email} </p>
                         <button onClick={handleLogOut}>LogOut</button>
                     </div> : <div>
-                        <Link className='mx-2' to="/login">Login</Link>
-                        <Link className='mx-2' to="/register">Register</Link>
+                        <NavLink className='mx-2' to="/login">Login</NavLink>
+                        <NavLink className='mx-2' to="/register">Register</NavLink>
                     </div>
                 }
             </div>
